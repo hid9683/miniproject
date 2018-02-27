@@ -13,21 +13,38 @@
           <div class="row">
             <div class="col-md-8 blog-main">
               <div class="blog-post">
-                <h2 class="blog-post-title">{ opts.selectedPost.title }</h2>
-                <p class="blog-post-meta">{ opts.selectedPost.publishedDate } by <a href="#">{ opts.selectedPost.author }</a></p>
+                <h2 class="blog-post-title"><span class = "{newClass}">{ opts.selectedPost.title }</span></h2>
+                <p class=" blog-post-meta"><span class = "{newClass}">{ opts.selectedPost.publishedDate } </span><br> by <a href="#"><span class = "{newClass}">{ opts.selectedPost.author }</span></a></p>
                 <hr>
                 <img src="{ opts.selectedPost.imageURL }" class="img-fluid">
 
                 <span>{ opts.selectedPost.bodyText }</span>
+                <br>
+                  <br>
+                    <br>
+
+<p class=" blog-post-meta ">{ opts.selectedPost.question }</p>
+
+<label each={ choice in opts.selectedPost.choices }>
+  <input type="radio"  value={ opts.selectedPost.answer } onclick={ setAnswer }></input> { choice }<br>
+</label>
+
+
+
 
               </div><!-- /.blog-post -->
 
             </div><!-- /.blog-main -->
 
             <aside class="col-md-4 blog-sidebar" if={ opts.selectedPost.isFake }>
+              <div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick={ check }>Check the fact</button>
+                  <br>
+                    <br>
+              </div>
               <div class="p-3 mb-3 alert alert-danger">
                 <h4 class="font-italic">Why is this fake news?</h4>
-                <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p class="mb-0"> The author takes only a portion of a climate period to support his claim that global warming isn't occurring instead of revealing the entire statistics published by NASA originally. </p>
               </div>
 
               <div class="p-3 bg-light">
@@ -38,6 +55,7 @@
                   <li><a href="#">Link 3</a></li>
                   <li><a href="#">Link 4</a></li>
                 </ol>
+
               </div>
             </aside><!-- /.blog-sidebar -->
 
@@ -58,6 +76,14 @@
   goBack() {
       observable.trigger('postSelected', -1);
   }
+  check(event){
+    this.newClass = "xclass";
 
+    }
   </script>
+  <style>
+  .xclass{
+    background-color: yellow;
+  }
+  </style>
 </article>
