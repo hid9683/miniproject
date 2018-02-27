@@ -13,11 +13,11 @@
     </div>
   </div>
 
-
 <script>
   read(event) {
-    console.log(event);
+    observable.trigger('postSelected', this);
   }
+  
   share(event) {
     if (this.isFake)
       alert("Are you sure? You may be sharing the fake virus.");
